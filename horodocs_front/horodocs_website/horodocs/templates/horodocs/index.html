@@ -1,0 +1,40 @@
+{% extends 'horodocs/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block main %}
+
+<div class="container">
+  <h4 class="page-header">{% translate "Horodatage d'informations" %}</h4>
+  <div class="text-block">
+    <p>
+    {% translate "Ce système permet d’horodater des fichiers, en particulier dans une optique de renforcement de la continuité de la preuve en sciences forensique." %}
+    {% translate "L’utilisateur reçoit une quittance PDF contenant un code QR." %}
+    {% translate "La lecture de ce code permettra à un vérificateur de s’assurer que les empreintes de ce fichier ont bien été horodatées à l'heure indiquée." %}
+    </p>
+    <p>
+      {% translate "L’utilisateur peut utiliser l'interface web afin d'horodater un fichier via ses empreintes." %}
+      {% translate "Les empreintes ne seront pas stockées, mais utilisées pour calculer les valeurs intermédiaires et finales de l'horodatage. Le serveur d'horodatage produit la quittance PDF. Celle-ci comporte :" %}
+  <ul>
+    <li>{% translate "Le code QR qui peut être scanné pour vérifier l’horodatage du fichier via ses empreintes ;" %}</li>
+    <li>{% translate "Le contenu du code QR pour utiliser le lien directement depuis le PDF ;" %}</li>
+    <li>{% translate "Le numéro de quittance ;" %}</li>
+    <li>{% translate "Un identifiant du cas (librement choisi par l'enquêteur) ;" %}</li>
+    <li>{% translate "Un identifiant du fichier (librement choisi par l'enquêteur) ;" %}</li>
+    <li>{% translate "Un identifiant de l'enquêteur (librement choisi par l'enquêteur) ;" %}</li>
+    <li>{% translate "Le nom du fichier horodaté ;" %}</li>
+    <li>{% translate "La date et l'heure de soumission du fichier dans le système d'horodatage ;" %}</li>
+    <li>{% translate "Les empreintes du fichier horodaté ;" %}</li>
+    <li>{% translate "Le numéro de quittance ;" %}</li>
+    <li>{% translate "La valeur témoin ;" %}</li>
+  </ul>
+  <p>
+    {% translate "Ainsi que des informations plus techniques : " %}
+  </p>
+  <ul>
+    <li>{% translate "Date et heure de finalisation de l'arbre;" %}</li>
+    <li>{% translate "La valeur du sel" %}</li>
+    <li>{% translate "Les embranchements antérieurs et postérieurs de l'arbre nécessaires pour retrouver sa racine depuis l'embranchement correspondant au fichier horodaté" %}</li>
+  </ul>
+  </div>
+</div>
+{% endblock %}

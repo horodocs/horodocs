@@ -1,0 +1,73 @@
+{% load static %}
+{% load i18n %}
+{% block image_hash_drop %}
+
+
+<div class="container-fluid">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="zone_file-tab" data-bs-toggle="tab" data-bs-target="#zone_file" type="button" role="tab" aria-controls="zone_file" aria-selected="true">{% translate "Fichier" %}</button>
+        </li>
+        {% if "/add" in request.path %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="input_hashes-tab" data-bs-toggle="tab" data-bs-target="#input_hashes" type="button" role="tab" aria-controls="input_hashes" aria-selected="false">{% translate "MD5 et SHA256" %}</button>
+        </li>
+        {% endif %}
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="zone_file" role="tabpanel" aria-labelledby="zone_file-tab">
+            <div id="zone">
+                <a id="fileZone" ondrop="drophandler(event)" ondragover="block_default_behavior(event)" draggable="true" href="#">
+                <div class="dropZone">
+                    {% translate "<h3>Glisser votre fichier ici<br>ou cliquer sur la zone <br>(un fichier à la fois)</h3>" %}
+                </div>
+                </a>
+                <!-- Cet input permet d'envoyer les images -->
+                <input id="fileInput" value="" style="display:none;" autocomplete="off" type="file" name="files[]" required/>
+            </div>
+            {% include 'horodocs/results-hash-doc.html' %}
+        </div>
+        {% if "/add" in request.path %}
+            <div class="tab-pane fade" id="input_hashes" role="tabpanel" aria-labelledby="input_hashes-tab">
+                {% include 'horodocs/input-hash-doc.html' %}
+            </div>
+        {% endif %}
+      </div>
+
+    <div id="alert_file_missing" class="alert alert-danger" role="alert" style="display:none">
+        {% translate "Le fichier à horodater est manquant ou les valeurs MD5 et SHA256 sont manquantes." %}
+    </div>  
+    
+</div>
+
+<script type="text/javascript"> 
+    var md5Path = '{% static "libs/md5-min.js" %}';
+    {% comment %} var sha1Path = '{% static "libs/sha1-min.js" %}'; {% endcomment %}
+    var sha256Path = '{% static "libs/sha256-min.js" %}';
+    /* 
+        Permet d'upload une image si on clique sur la zone.
+    */
+    $('#fileZone').click(function () {
+        $('#fileInput').click();
+        return false;
+    });
+    $('#fileInput').change(function (event) {
+        $("#alert_file_missing").hide();
+        hash_process(event);
+    });
+
+    
+    function drophandler(event) {
+        /*
+            If the file is dropped, we need to add it to the input.
+        */
+        var files = event.dataTransfer ? event.dataTransfer.files : event.target.files; 
+        document.getElementById("fileInput").files = files;
+        $("#alert_file_missing").hide();
+        hash_process(event);
+    }
+</script>
+
+<script src="{% static 'js/hash_docs.js' %}"></script>
+
+{% endblock %}

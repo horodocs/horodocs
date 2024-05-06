@@ -1,0 +1,504 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-17 08:56+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\horodocs\forms.py:21
+msgid "Numéro du cas"
+msgstr "Numéro du cas :"
+
+#: .\horodocs\forms.py:29
+msgid "Identifiant du fichier"
+msgstr "Identifiant du fichier"
+
+#: .\horodocs\forms.py:37
+msgid "Enquêteur"
+msgstr "Enquêteur"
+
+#: .\horodocs\forms.py:46
+msgid "Email de l'enquêteur"
+msgstr "Email de l'enquêteur"
+
+#: .\horodocs\forms.py:53
+msgid "Texte libre"
+msgstr "Texte libre"
+
+#: .\horodocs\forms.py:61
+msgid "Recevoir la confirmation de l'ancrage dans la blockchain par mail"
+msgstr "Recevoir la confirmation de l'ancrage dans la blockchain par mail"
+
+#: .\horodocs\templates\horodocs\base.html:14
+msgid "Registre"
+msgstr ""
+
+#: .\horodocs\templates\horodocs\document-hash.html:9
+msgid "Fichier"
+msgstr "Fichier"
+
+#: .\horodocs\templates\horodocs\document-hash.html:13
+msgid "MD5 et SHA256"
+msgstr "MD5 et SHA256"
+
+#: .\horodocs\templates\horodocs\document-hash.html:22
+msgid ""
+"<h3>Glisser votre fichier ici<br>ou cliquer sur la zone <br>(un fichier à la "
+"fois)</h3>"
+msgstr ""
+"<h3>Glisser votre fichier ici<br>ou cliquer sur la zone <br>(un fichier à la "
+"fois)</h3>"
+
+#: .\horodocs\templates\horodocs\document-hash.html:38
+msgid ""
+"Le fichier à horodater est manquant ou les valeurs MD5 et SHA256 sont "
+"manquantes."
+msgstr ""
+"Le fichier à horodater est manquant ou les valeurs MD5 et SHA256 sont "
+"manquantes."
+
+#: .\horodocs\templates\horodocs\footer.html:5
+msgid "Horodocs - Ecole des sciences criminelles - Université de Lausanne"
+msgstr "Horodocs - Ecole des sciences criminelles - Université de Lausanne"
+
+#: .\horodocs\templates\horodocs\form-horo.html:6
+#: .\horodocs\templates\horodocs\form-horo.html:41
+msgid ""
+"Les données ont correctement été envoyées au serveur. Vous recevrez votre "
+"quittance PDF par e-mail dans quelques minutes."
+msgstr ""
+"Les données ont correctement été envoyées au serveur. Vous recevrez votre "
+"quittance PDF par e-mail dans quelques minutes."
+
+#: .\horodocs\templates\horodocs\form-horo.html:9
+#: .\horodocs\templates\horodocs\form-horo.html:44
+msgid ""
+"Un problème est survenu lors de l'envoi du formulaire. Veuillez réessayer "
+"plus tard ou contacter l'administrateur du système si l'erreur persiste."
+msgstr ""
+"Un problème est survenu lors de l'envoi du formulaire. Veuillez réessayer "
+"plus tard ou contacter l'administrateur du système si l'erreur persiste."
+
+#: .\horodocs\templates\horodocs\form-horo.html:20
+msgid ""
+"Informations qui ne seront pas stockées sur le serveur <br> mais "
+"exclusivement sur la quittance PDF"
+msgstr ""
+"Informations qui ne seront pas stockées sur le serveur <br> mais "
+"exclusivement sur la quittance PDF"
+
+#: .\horodocs\templates\horodocs\form-horo.html:24
+msgid "Horodater les empreintes"
+msgstr "Horodater les empreintes"
+
+#: .\horodocs\templates\horodocs\form-horo.html:34
+msgid "Réinitialiser"
+msgstr "Réinitialiser"
+
+#: .\horodocs\templates\horodocs\hash.html:4
+msgid "Calcul d'empreintes"
+msgstr "Calcul d'empreintes"
+
+#: .\horodocs\templates\horodocs\hash.html:9
+msgid "Calcul d'empreintes d'un fichier"
+msgstr "Calcul d'empreintes d'un fichier"
+
+#: .\horodocs\templates\horodocs\hash.html:13
+msgid ""
+"Le calcul des empreintes se fait exclusivement sur votre machine locale et "
+"aucun fichier n'est transféré."
+msgstr ""
+"Le calcul des empreintes se fait exclusivement sur votre machine locale et "
+"aucun fichier n'est transféré."
+
+#: .\horodocs\templates\horodocs\horodocs.html:4
+msgid "Horodatage d'empreintes"
+msgstr "Horodatage d'empreintes"
+
+#: .\horodocs\templates\horodocs\horodocs.html:10
+msgid ""
+"Calcul d'empreintes d'un fichier et/ou horodatage de ces empreintes, ancré "
+"dans une blockchain"
+msgstr ""
+"Calcul d'empreintes d'un fichier et/ou horodatage de ces empreintes, ancré "
+"dans une blockchain"
+
+#: .\horodocs\templates\horodocs\horodocs.html:15
+msgid ""
+"Le calcul des empreintes se fait exclusivement sur votre machine locale et "
+"aucun fichier n'est transféré. Si vous préférez, vous pouvez aussi "
+"directement fournir les empreintes et les horodater via l'onglet MD5 et "
+"SHA256"
+msgstr ""
+"Le calcul des empreintes se fait exclusivement sur votre machine locale et "
+"aucun fichier n'est transféré. Si vous préférez, vous pouvez aussi "
+"directement fournir les empreintes et les horodater via l'onglet &quot;MD5 "
+"et SHA256&quot;"
+
+#: .\horodocs\templates\horodocs\index.html:7
+msgid "Horodatage d'informations"
+msgstr "Horodatage d'informations"
+
+#: .\horodocs\templates\horodocs\index.html:10
+msgid ""
+"Ce système permet d’horodater des fichiers, en particulier dans une optique "
+"de renforcement de la continuité de la preuve en sciences forensique."
+msgstr ""
+"Ce système permet d’horodater des fichiers, en particulier dans une optique "
+"de renforcement de la continuité de la preuve en sciences forensique."
+
+#: .\horodocs\templates\horodocs\index.html:11
+msgid "L’utilisateur reçoit une quittance PDF contenant un code QR."
+msgstr "L’utilisateur reçoit une quittance PDF contenant un code QR."
+
+#: .\horodocs\templates\horodocs\index.html:12
+msgid ""
+"La lecture de ce code permettra à un vérificateur de s’assurer que les "
+"empreintes de ce fichier ont bien été horodatées à l'heure indiquée."
+msgstr ""
+"La lecture de ce code permettra à un vérificateur de s’assurer que les "
+"empreintes de ce fichier ont bien été horodatées à l'heure indiquée."
+
+#: .\horodocs\templates\horodocs\index.html:15
+msgid ""
+"L’utilisateur peut utiliser l'interface web afin d'horodater un fichier via "
+"ses empreintes."
+msgstr ""
+"L’utilisateur peut utiliser l'interface web afin d'horodater un fichier via "
+"ses empreintes."
+
+#: .\horodocs\templates\horodocs\index.html:16
+msgid ""
+"Les empreintes ne seront pas stockées, mais utilisées pour calculer les "
+"valeurs intermédiaires et finales de l'horodatage. Le serveur d'horodatage "
+"produit la quittance PDF. Celle-ci comporte :"
+msgstr ""
+"Les empreintes ne seront pas stockées, mais utilisées pour calculer les "
+"valeurs intermédiaires et finales de l'horodatage. Le serveur d'horodatage "
+"produit la quittance PDF. Celle-ci comporte :"
+
+#: .\horodocs\templates\horodocs\index.html:18
+msgid ""
+"Le code QR qui peut être scanné pour vérifier l’horodatage du fichier via "
+"ses empreintes ;"
+msgstr ""
+"Le code QR qui peut être scanné pour vérifier l’horodatage du fichier via "
+"ses empreintes ;"
+
+#: .\horodocs\templates\horodocs\index.html:19
+msgid "Le contenu du code QR pour utiliser le lien directement depuis le PDF ;"
+msgstr ""
+"Le contenu du code QR pour utiliser le lien directement depuis le PDF ;"
+
+#: .\horodocs\templates\horodocs\index.html:20
+#: .\horodocs\templates\horodocs\index.html:27
+msgid "Le numéro de quittance ;"
+msgstr "Le numéro de quittance ;"
+
+#: .\horodocs\templates\horodocs\index.html:21
+msgid "Un identifiant du cas (librement choisi par l'enquêteur) ;"
+msgstr "Un identifiant du cas (librement choisi par l'enquêteur) ;"
+
+#: .\horodocs\templates\horodocs\index.html:22
+msgid "Un identifiant du fichier (librement choisi par l'enquêteur) ;"
+msgstr "Un identifiant du fichier (librement choisi par l'enquêteur) ;"
+
+#: .\horodocs\templates\horodocs\index.html:23
+msgid "Un identifiant de l'enquêteur (librement choisi par l'enquêteur) ;"
+msgstr "Un identifiant de l'enquêteur (librement choisi par l'enquêteur) ;"
+
+#: .\horodocs\templates\horodocs\index.html:24
+msgid "Le nom du fichier horodaté ;"
+msgstr "Le nom du fichier horodaté ;"
+
+#: .\horodocs\templates\horodocs\index.html:25
+msgid ""
+"La date et l'heure de soumission du fichier dans le système d'horodatage ;"
+msgstr ""
+"La date et l'heure de soumission du fichier dans le système d'horodatage ;"
+
+#: .\horodocs\templates\horodocs\index.html:26
+msgid "Les empreintes du fichier horodaté ;"
+msgstr "Les empreintes du fichier horodaté ;"
+
+#: .\horodocs\templates\horodocs\index.html:28
+msgid "La valeur témoin ;"
+msgstr "La valeur témoin ;"
+
+#: .\horodocs\templates\horodocs\index.html:31
+msgid "Ainsi que des informations plus techniques : "
+msgstr "Ainsi que des informations plus techniques : "
+
+#: .\horodocs\templates\horodocs\index.html:34
+msgid "Date et heure de finalisation de l'arbre;"
+msgstr "Date et heure de finalisation de l'arbre ;"
+
+#: .\horodocs\templates\horodocs\index.html:35
+msgid "La valeur du sel"
+msgstr "La valeur du sel"
+
+#: .\horodocs\templates\horodocs\index.html:36
+msgid ""
+"Les embranchements antérieurs et postérieurs de l'arbre nécessaires pour "
+"retrouver sa racine depuis l'embranchement correspondant au fichier horodaté"
+msgstr ""
+"Les embranchements antérieurs et postérieurs de l'arbre nécessaires pour "
+"retrouver sa racine depuis l'embranchement correspondant au fichier horodaté"
+
+#: .\horodocs\templates\horodocs\navbar-top.html:13
+msgid "Ajouter élément"
+msgstr "Ajouter élément"
+
+#: .\horodocs\templates\horodocs\navbar-top.html:17
+msgid "Hash Local"
+msgstr "Hash Local"
+
+#: .\horodocs\templates\horodocs\navbar-top.html:38
+msgid "Déconnexion"
+msgstr "Déconnexion"
+
+#: .\horodocs\templates\horodocs\navbar-top.html:40
+#: .\horodocs\templates\registration\login.html:26
+msgid "Connexion"
+msgstr "Connexion"
+
+#: .\horodocs\templates\horodocs\verification.html:4
+msgid "Verification Horodatage"
+msgstr "Verification Horodatage"
+
+#: .\horodocs\templates\horodocs\verification.html:15
+msgid "Données extraites du QR code :"
+msgstr "Données extraites du QR code :"
+
+#: .\horodocs\templates\horodocs\verification.html:17
+msgid "Heure d'horodatage annoncée :"
+msgstr "Heure d'horodatage annoncée :"
+
+#: .\horodocs\templates\horodocs\verification.html:21
+msgid "Empreintes numériques du fichier :"
+msgstr "Empreintes numériques du fichier :"
+
+#: .\horodocs\templates\horodocs\verification.html:27
+msgid ""
+"Assurez-vous que les empreintes numériques du fichier, extraites du QR code, "
+"correspondent à celles du fichier dont vous vérifiez l’horodatage."
+msgstr ""
+"Assurez-vous que les empreintes numériques du fichier, extraites du QR code, "
+"correspondent à celles du fichier dont vous vérifiez l’horodatage."
+
+#: .\horodocs\templates\horodocs\verification.html:31
+msgid "Résultat de la vérification :"
+msgstr "Résultat de la vérification :"
+
+#: .\horodocs\templates\horodocs\verification.html:34
+msgid ""
+"L'horodatage du fichier a été retrouvé dans la blockchain Ethereum-test."
+msgstr ""
+"L'horodatage du fichier a été retrouvé dans la blockchain Ethereum-test."
+
+#: .\horodocs\templates\horodocs\verification.html:35
+#: .\horodocs\templates\horodocs\verification.html:50
+msgid "Date et heure de la soumission dans la blockchain :"
+msgstr "Date et heure de la soumission dans la blockchain :"
+
+#: .\horodocs\templates\horodocs\verification.html:39
+#: .\horodocs\templates\horodocs\verification.html:54
+msgid ""
+"Assurez-vous que l’heure de soumission dans la blockchain correspond bien à "
+"celle imprimée sur la quittance."
+msgstr ""
+"Assurez-vous que l’heure de soumission dans la blockchain correspond bien à "
+"celle imprimée sur la quittance."
+
+#: .\horodocs\templates\horodocs\verification.html:41
+#: .\horodocs\templates\horodocs\verification.html:43
+#: .\horodocs\templates\horodocs\verification.html:47
+msgid "L'ancrage dans la blockchain est "
+msgstr "L'ancrage dans la blockchain est "
+
+#: .\horodocs\templates\horodocs\verification.html:41
+msgid "valide et pérenne "
+msgstr "valide et pérenne "
+
+#: .\horodocs\templates\horodocs\verification.html:43
+msgid "valide"
+msgstr "valide"
+
+#: .\horodocs\templates\horodocs\verification.html:43
+msgid "mais"
+msgstr "mais"
+
+#: .\horodocs\templates\horodocs\verification.html:43
+msgid "pas encore pérenne"
+msgstr "pas encore pérenne"
+
+#: .\horodocs\templates\horodocs\verification.html:46
+msgid "L'horodatage du fichier n'a pas été retrouvé."
+msgstr "L'horodatage du fichier n'a pas été retrouvé."
+
+#: .\horodocs\templates\horodocs\verification.html:47
+msgid "invalide"
+msgstr "invalide"
+
+#: .\horodocs\templates\horodocs\verification.html:49
+msgid ""
+"L'horodatage du fichier a été retrouvé mais la transaction est en cours "
+"d'ajout dans un bloc. Elle n'est donc pas encore ancrée dans la blockchain."
+msgstr ""
+"L'horodatage du fichier a été retrouvé mais la transaction est en cours "
+"d'ajout dans un bloc. Elle n'est donc pas encore ancrée dans la blockchain."
+
+#: .\horodocs\templates\horodocs\verification.html:55
+msgid "L'ancrage dans la blockchain "
+msgstr "L'ancrage dans la blockchain "
+
+#: .\horodocs\templates\horodocs\verification.html:55
+msgid "n'a pas encore été effectué "
+msgstr "n'a pas encore été effectué "
+
+#: .\horodocs\templates\horodocs\verification.html:58
+msgid ""
+"La valeur témoin corrobore le fait que le processus de vérification s’est "
+"déroulé correctement :"
+msgstr ""
+"La valeur témoin corrobore le fait que le processus de vérification s’est "
+"déroulé correctement :"
+
+#: .\horodocs\templates\horodocs\verification.html:60
+msgid "Valeur témoin retrouvée dans la blockchain :"
+msgstr "Valeur témoin retrouvée dans la blockchain :"
+
+#: .\horodocs\templates\horodocs\verification.html:64
+msgid ""
+"La valeur témoin retrouvée dans la blockchain lors de la vérification doit "
+"être la même que celle imprimée sur la quittance d’horodatage du fichier."
+msgstr ""
+"La valeur témoin retrouvée dans la blockchain lors de la vérification doit "
+"être la même que celle imprimée sur la quittance d’horodatage du fichier."
+
+#: .\horodocs\templates\horodocs\verification.html:66
+#: .\horodocs\templates\horodocs\verification.html:98
+msgid "Afficher plus"
+msgstr "Afficher plus"
+
+#: .\horodocs\templates\horodocs\verification.html:71
+msgid "Informations techniques :"
+msgstr "Informations techniques :"
+
+#: .\horodocs\templates\horodocs\verification.html:75
+msgid "Racine calculée : "
+msgstr "Racine calculée : "
+
+#: .\horodocs\templates\horodocs\verification.html:77
+msgid "Numéro du bloc :"
+msgstr "Numéro du bloc :"
+
+#: .\horodocs\templates\horodocs\verification.html:78
+msgid "Empreinte du bloc :"
+msgstr "Empreinte du bloc :"
+
+#: .\horodocs\templates\horodocs\verification.html:79
+msgid "Empreinte de la transaction :"
+msgstr "Empreinte de la transaction :"
+
+#: .\horodocs\templates\horodocs\verification.html:80
+msgid "URL de la transaction :"
+msgstr "URL de la transaction :"
+
+#: .\horodocs\templates\horodocs\verification.html:81
+msgid "Explication du calcul de la racine : "
+msgstr "Explication du calcul de la racine : "
+
+#: .\horodocs\templates\horodocs\verification.html:96
+msgid "Afficher moins"
+msgstr "Afficher moins"
+
+#: .\horodocs\templates\registration\logged_out.html:5
+msgid "Vous vous êtes déconnecté avec succès ! A bientôt."
+msgstr "Vous vous êtes déconnecté avec succès ! A bientôt."
+
+#: .\horodocs\templates\registration\logged_out.html:6
+msgid ""
+"Vous allez être redirigé sur la page d'accueil dans 5 secondes, ou vous "
+"pouvez cliquer"
+msgstr ""
+"Vous allez être redirigé sur la page d'accueil dans 5 secondes, ou vous "
+"pouvez cliquer "
+
+#: .\horodocs\templates\registration\logged_out.html:6
+msgid "ici"
+msgstr "ici"
+
+#: .\horodocs\templates\registration\login.html:4
+msgid ""
+"A test user is available, the username is test and the password is test2024"
+msgstr ""
+"Un utilisateur test est disponible. Identifiant : test / Mot de passe : "
+"test2024"
+
+#: .\horodocs\templates\registration\login.html:8
+#: .\horodocs\templates\registration\login.html:12
+msgid "Username"
+msgstr "Identifiant"
+
+#: .\horodocs\templates\registration\login.html:17
+#: .\horodocs\templates\registration\login.html:21
+msgid "Password"
+msgstr "Mot&nbsp;de&nbsp;passe"
+
+#: .\horodocs_website\settings.py:154
+msgid "English"
+msgstr "Anglais"
+
+#: .\horodocs_website\settings.py:155
+msgid "Français"
+msgstr "Français"
+
+#: .\horodocs_website\settings.py:238
+msgid "Cookie settings"
+msgstr "Paramètres des cookies"
+
+#: .\horodocs_website\settings.py:240
+msgid ""
+"We are using cookies on this website. Only essentials one, there is no "
+"analytics here."
+msgstr ""
+"Nous utilisons des cookies sur ce site. Seulement des essentiels, aucun "
+"cookie analytique ou marketing."
+
+#: .\horodocs_website\settings.py:242
+msgid "Please accept our cookies"
+msgstr "Veuillez accepter nos cookies s'il vous plaît"
+
+#: .\horodocs_website\settings.py:247
+msgid "Essential"
+msgstr "Essentiels"
+
+#: .\horodocs_website\settings.py:248
+msgid "Essential cookies allow this page to work."
+msgstr "Les cookies essentiels permettent à cette page de fonctionner"
+
+#: .\horodocs_website\settings.py:253
+msgid "Meta cookie for the cookies that are set."
+msgstr "Les cookies meta sont pour les cookies définis."
+
+#: .\horodocs_website\settings.py:258
+msgid "This cookie prevents Cross-Site-Request-Forgery attacks."
+msgstr "Ce cookie empêche les attaques de type Cross-Site-Request-Forgery"
+
+#: .\horodocs_website\settings.py:264
+msgid "This cookie is necessary to allow logging in, for example."
+msgstr "Ce cookie est nécessaire pour permettre de se connecter, par exemple."

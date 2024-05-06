@@ -1,0 +1,122 @@
+{% block form %}
+{% load i18n %}
+{% csrf_token %}
+{% include 'horodocs/document-hash.html' %}
+<div class="alert alert-success text-center" id="success-alert" style="display: none">
+    {% translate "Les données ont correctement été envoyées au serveur. Vous recevrez votre quittance PDF par e-mail dans quelques minutes." %}
+</div>
+<div class="alert alert-danger text-center" id="failure-alert" style="display: none">
+    {% translate "Un problème est survenu lors de l'envoi du formulaire. Veuillez réessayer plus tard ou contacter l'administrateur du système si l'erreur persiste." %}
+</div>
+<div class="d-flex align-items-center justify-content-center">
+    
+    <div id="formulaire"class="container-fluid"
+    style="border-style: dashed; background-color: #dbdbdb; border-color: grey; border-width: 1px; max-width:1300px;">
+        
+        <form method='post' id='infos' name="infos_horo" action="" target="_blank" type="hidden">
+
+            
+            <div style="text-align: center; margin-bottom: 10px">
+                <b><u>{% translate "Informations qui ne seront pas stockées sur le serveur <br> mais exclusivement sur la quittance PDF" %}</u></b>
+            </div>
+            {{ form }}
+            <div class='infos_fichier'>
+                <input type="submit" id="sub_horo"  value="{% translate 'Horodater les empreintes' %}"
+                    style="display: block; margin-bottom: 20px; margin-top: 20px"
+                    class="btn btn-success pull-left horoform">
+                    <span id="loading_1" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none"></span>
+                </input>  
+            </div>  
+              
+        </form>
+        <button id="clear_inputs" type="button" class="btn btn-warning pull-right "
+                style="display: block; margin-bottom: 20px; margin-top: 20px">
+            {% translate "Réinitialiser" %}
+        </button>
+        
+        
+    </div>
+</div>
+<div class="alert alert-success text-center" id="success-alert-2" style="display: none">
+    {% translate "Les données ont correctement été envoyées au serveur. Vous recevrez votre quittance PDF par e-mail dans quelques minutes." %}
+</div>
+<div class="alert alert-danger text-center" id="failure-alert-2" style="display: none">
+    {% translate "Un problème est survenu lors de l'envoi du formulaire. Veuillez réessayer plus tard ou contacter l'administrateur du système si l'erreur persiste." %}
+</div>
+<script type="text/javascript">
+    $("#clear_inputs").click(function(){
+        clear_form_horo();
+    });
+
+    $("#infos").submit(function(event) {
+        event.preventDefault();
+        if((document.getElementById("fileInput").files.length == 0) && (document.getElementById("input_md5_value").value == '') && (document.getElementById("input_sha256_value").value == '')){
+            $("#alert_file_missing").show();
+        } else {
+            $("#alert_file_missing").hide();
+            send_form();
+        }
+    });
+
+    /**
+        Send_form is used to send all the values from the form to the website backend route as a POST request (/add).
+        Display a success or failure alert depending on the status in the ajax response.
+        Clear the data by calling clear_form_horo() in case of a success.
+    */
+    function send_form() {
+        $("#sub_horo").prop("disabled", true);
+        $("#loading_1").show();
+        if(document.getElementById("fileInput").files.length == 0) {
+            $("#id_md5_value").val($("#input_md5_value").val()); 
+            $("#id_sha256_value").val($("#input_sha256_value").val()); 
+        }
+        console.log($("#infos").serialize())
+        $.ajax({
+            url: "add",
+            type: "POST",
+            headers: { "X-CSRFToken": '{{csrf_token}}' },
+            data: $("#infos").serialize(), 
+            success: function(response) {
+                $("#success-alert").show();
+                $("#success-alert-2").show();
+                $("#loading_1").hide();
+                $("#sub_horo").prop("disabled", false);
+                setTimeout(function() {
+                    $("#success-alert").hide();
+                    $("#success-alert-2").hide();
+                }, 4000);
+                clear_form_horo();
+            },
+            error: function(response) {
+                $("#failure-alert").show();
+                $("#failure-alert-2").show();
+                $("#loading_1").hide();
+                $("#sub_horo").prop("disabled", false);
+                setTimeout(function() {
+                    $("#failure-alert").hide();
+                    $("#failure-alert-2").hide();
+                }, 14000);
+            }
+        });
+    }
+
+    /**
+        clear_form_horo() is used to clear all the user inputted values except the email.
+        The email is treated differently by putting the email of the logged in user if nothing is in the textinput. If something is in the textinput, the value is not changed.
+    */
+    function clear_form_horo() {
+        $('#infos').find('input[type=text]').val('');
+        $('#infos').find('textarea').val('');
+        $('#zone').show();
+        $('.hash_value').empty();
+        $('#filenameResult').empty();
+        $('#input_md5_value').val('');
+        $('#input_sha256_value').val('');
+        $('#results').hide();
+        $("#fileInput").val('');
+    }
+    if($("#id_email_user").val() == '') {
+        $("#id_email_user").attr("value","{{ user.email }}")
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,11 @@
+.venv
+.env
+contract_transactions.json
+__pycache__
+/static/tmp/*
+node_modules
+venv_front
+db.sqlite3
+staticfiles
+*.log
+config/

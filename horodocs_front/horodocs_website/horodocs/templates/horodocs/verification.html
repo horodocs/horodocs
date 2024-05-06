@@ -1,0 +1,104 @@
+{% extends 'horodocs/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% translate "Verification Horodatage" %}{% endblock %}
+{% block main %}
+
+
+<!--
+    This page is constructed depending on the backend response. Backend can respond with a "validation" value with 0,1,2 or 5. 1 2 indicates a success and 0 5 a failure. 
+    1 indicates all is good and 2 indicates that the validation process in the blockchain is in progress but not finished.
+-->
+<div class="container-fluid">
+    <div class="data_pdf">
+        <h4 class="page-header">
+            {% translate "Données extraites du QR code :" %} 
+        </h4>
+        <b>{% translate "Heure d'horodatage annoncée :" %}</b>
+        <ul>             
+            <li class="text-primary"><b> Date :</b> {{date}}</li>
+        </ul> 
+        <b>{% translate "Empreintes numériques du fichier :" %}</b>
+        <ul>
+            <li class="text-primary"><b>MD5 :</b> {{md5}}</li>
+            <li class="text-primary"><b>SHA256 :</b> {{sha256}}</li>
+        </ul>
+
+        <div class="p-3 mb-2 bg-secondary bg-gradient text-white">{% translate "Assurez-vous que les empreintes numériques du fichier, extraites du QR code, correspondent à celles du fichier dont vous vérifiez l’horodatage." %}</div>
+    </div>
+    <div class="calc_values">
+        <h4 class="page-header">
+            {% translate "Résultat de la vérification :" %}
+        </h4>
+        {% if validation == 1 or validation == 2%}
+            <p class="text-success"><b>{% translate "L'horodatage du fichier a été retrouvé dans la blockchain Ethereum-test." %}</b></p>
+            <b>{% translate "Date et heure de la soumission dans la blockchain :" %}</b>
+            <ul>
+                <li class="text-success">{{tree_date}}</li>
+            </ul>
+            <div class="p-3 mb-2 bg-secondary bg-gradient text-white">{% translate "Assurez-vous que l’heure de soumission dans la blockchain correspond bien à celle imprimée sur la quittance." %}</div>
+            {% if validation == 1%}
+                <p><b><i class="fa fa-check fa-2x" aria-hidden="true" style="color:green"></i>{% translate "L'ancrage dans la blockchain est " %}<span class="text-success">{% translate "valide et pérenne " %}<i class="fa fa-check fa-2x" aria-hidden="true" style="color:green"></i></span>.</b></p>
+            {% elif validation == 2%}
+                <p><b><i class="fa fa-check fa-2x" aria-hidden="true" style="color:green"></i>{% translate "L'ancrage dans la blockchain est " %}<span class="text-success">{% translate "valide" %}<i class="fa fa-check fa-2x" aria-hidden="true" style="color:green"></i></span> {% translate "mais" %} <span class="text-warning">{% translate "pas encore pérenne" %}<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true" style="color:orange"></i></span>.</b></p>
+            {% endif %}
+        {% elif validation == 0 or validation == 5 %}
+            <p class="text-danger"><b>{% translate "L'horodatage du fichier n'a pas été retrouvé." %}</b></p>
+            <p><b><i class="fa fa-times fa-2x" aria-hidden="true" style="color:red"></i>{% translate "L'ancrage dans la blockchain est " %}<span class="text-danger">{% translate "invalide" %} <i class="fa fa-times fa-2x" aria-hidden="true" style="color:red"></i></span>.</b></p>
+        {% else %}
+            <p class="test-warning"><b>{% translate "L'horodatage du fichier a été retrouvé mais la transaction est en cours d'ajout dans un bloc. Elle n'est donc pas encore ancrée dans la blockchain." %}</b></p>
+            <b>{% translate "Date et heure de la soumission dans la blockchain :" %}</b>
+            <ul>
+                <li class="text-warning">{{tree_date}}</li>
+            </ul>
+            <div class="p-3 mb-2 bg-secondary bg-gradient text-white">{% translate "Assurez-vous que l’heure de soumission dans la blockchain correspond bien à celle imprimée sur la quittance." %}</div>
+            <p><b><i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true" style="color:orange"></i>{% translate "L'ancrage dans la blockchain "%}<span class="text-warning">{% translate "n'a pas encore été effectué " %}<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true" style="color:orange"></i></span>.</b></p>
+        {% endif %}
+        <h4 class="page-header">
+            {% translate "La valeur témoin corrobore le fait que le processus de vérification s’est déroulé correctement :" %}
+        </h4>
+        <b>{% translate "Valeur témoin retrouvée dans la blockchain :" %}</b>
+        <ul>             
+            <li class="text-primary"><b>{{decrypted_lid}}</b></li>
+        </ul> 
+        <div class="p-3 mb-2 bg-secondary bg-gradient text-white">{% translate "La valeur témoin retrouvée dans la blockchain lors de la vérification doit être la même que celle imprimée sur la quittance d’horodatage du fichier." %}</div>
+        <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="collapseButton">{% translate "Afficher plus" %}</button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="technical_informations">
+                <h4 class="page-header">
+                    {% translate "Informations techniques :" %}
+                </h4>
+                <ul>
+                    <li><b>Version : </b><a href="{{url_doc}}">{{version}}</a></li>
+                    <li><b>{% translate "Racine calculée : " %}</b>{{tree_root}}</li>
+                    <li><b>Blockchain :</b> Ethereum-sepolia (Test)</li>
+                    <li><b>{% translate "Numéro du bloc :" %}</b> {{found_tx.blockNumber}}</li>
+                    <li><b>{% translate "Empreinte du bloc :" %}</b> {{found_tx.blockHash}}</li>
+                    <li><b>{% translate "Empreinte de la transaction :" %}</b> {{found_tx.hash}}</li>
+                    <li><b>{% translate "URL de la transaction :" %}</b> <a href="https://sepolia.etherscan.io/tx/{{found_tx.hash}}">https://sepolia.etherscan.io/tx/{{found_tx.hash}}</a></li>
+                    <li><b>{% translate "Explication du calcul de la racine : " %}</b><br /> {{explanation_text | linebreaksbr }} </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).ready(function(){
+        $('#collapseButton').on('click', function () {
+         var text=$('#collapseButton').text();
+         console.log(text);
+         if(text === "Afficher plus" || text === "Show more"){
+            $(this).text("{% translate 'Afficher moins' %}");
+         } else {
+            $(this).text("{% translate 'Afficher plus' %}");
+        }
+       });
+    });
+</script>
+
+{% endblock %}
