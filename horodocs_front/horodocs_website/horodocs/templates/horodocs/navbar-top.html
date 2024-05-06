@@ -1,0 +1,51 @@
+{% load i18n %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url "index" %}">Horodocs</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if request.path != "/horodatage/verification" %}
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'horodocs' %}">{% translate "Ajouter élément" %}</a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'hash' %}">{% translate "Hash Local" %}</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right"> <!-- boutton à droite pour login ou logout-->
+        <li class="px-3">
+          <form id="languageForm" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select class="form-select form-select-sm" name="language" onchange="submitLanguageChange()">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+          </form>
+        </li>
+      
+        {% if user.is_authenticated %}
+        <li><a title={% translate "Déconnexion" %} href="{% url 'logout' %}"><span class="fa fa-sign-out" aria-hidden="true"></span></a></li>
+        {% else %}
+        <li><a title={% translate "Connexion" %} href="{% url 'login' %}"><span class="fa fa-sign-in" aria-hidden="true"></span></a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function submitLanguageChange() {
+      document.getElementById('languageForm').submit();
+  }
+</script>

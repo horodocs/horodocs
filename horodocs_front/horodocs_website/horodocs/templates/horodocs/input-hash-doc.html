@@ -1,0 +1,27 @@
+{% block input_hash %}
+<div id="inputs_hash">
+    <div class="hashResult panel panel-default" style="word-break:break-all">
+        <div id="filenameResult_inp" class="panel-heading">
+
+        </div>
+        <table class="table" style="text-align:left">
+            <tr>
+                <td width="80"><strong>MD5</strong></td> 
+                <td> 
+                    <div class="inp_hash_value" id="md5_value" > 
+                        <input type="text" class="form-control" placeholder="MD5" aria-label="MD5" id="input_md5_value">
+                    </div> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td width="80"><strong>SHA256</strong></td> 
+                <td> 
+                    <div class="inp_hash_value" id="sha256_value"> 
+                        <input type="text" class="form-control" placeholder="SHA256" aria-label="SHA256" id="input_sha256_value">
+                    </div> 
+                </td> 
+            </tr> 
+        </table> 
+    </div>
+</div>
+{% endblock %}
