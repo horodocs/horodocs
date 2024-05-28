@@ -5,7 +5,7 @@ from django.shortcuts import render
 from horodocs.forms import HorodatageForm
 
 from horodocs_website.settings import API_KEY, API_URL
-from django.utils.translation import get_language
+from django.utils.translation import get_language, activate
 
 
 @login_required(login_url="login/")
@@ -31,7 +31,7 @@ def horodocs(request):
             data["language"] = get_language()
             full_url = API_URL + "add_leaf_tree/"
             headers = {"x-api-key": API_KEY}
-            response = requests.post(full_url, headers=headers, json=data, verify=False)
+            response = requests.post(full_url, headers=headers, json=data)
             if response.ok:
                 return JsonResponse({"status": "valid request"}, status=200)
             elif response.status_code == 503:
@@ -47,7 +47,6 @@ def horodocs(request):
         form = HorodatageForm()
         context = {
             "form": form,
-            "redirect_to": '/add'
         }
     return render(request, "horodocs/horodocs.html", context)
 
@@ -60,7 +59,7 @@ def index(request):
     :return: Loaded homepage
     :rtype: HttpResponse
     """
-    context = {"redirect_to": '/'}
+    context = {}
     return render(request, "horodocs/index.html", context)
 
 
@@ -90,10 +89,9 @@ def verification(request):
         full_url = API_URL + "verify_receipt/"
         dict_get["language"] = get_language()
         headers = {"x-api-key": API_KEY}
-        response = requests.get(full_url, params=dict_get, headers=headers, verify=False)
+        response = requests.get(full_url, params=dict_get, headers=headers)
         if response.ok:
             context = response.json()
-            context['redirect_to'] = '/verification?'+request.GET.urlencode()
             return render(request, "horodocs/verification.html", context)
     return render(request, "horodocs/verification.html", {"validation": 5})
 
@@ -106,5 +104,5 @@ def hash(request):
     :return: Loaded Hashpage
     :rtype: HttpResponse
     """
-    context = {'redirect_to': '/hash'}
+    context = {}
     return render(request, "horodocs/hash.html", context)

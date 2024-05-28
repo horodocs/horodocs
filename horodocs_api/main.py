@@ -49,7 +49,7 @@ c.start()
 bc = Eth()
 
 # Start the website Health check daemon
-health_thread = CheckWebsiteHealth("https://horodocs.unil.ch/ht/")
+health_thread = CheckWebsiteHealth("http://127.0.0.1:8000/ht/")
 health_thread.daemon = True
 health_thread.start()
 
@@ -206,50 +206,67 @@ async def add_leaf_tree(leaf_infos: LeafInfos, api_key: str = Security(get_api_k
     :rtype: Dict[str,str]
     """
     if not deactivate_horodating.is_set():
-        ts, tz = get_now_time()
-        now_date_readable = f'{ts.strftime("%Y-%m-%d %H:%M:%S")} ({tz})'
-        now_date_filename = now_date_readable.replace(" ", "").replace(":", "")
+        if is_valid_md5(leaf_infos.md5_value) and is_valid_sha256(
+            leaf_infos.sha256_value
+        ):
+            ts, tz = get_now_time()
+            now_date_readable = f'{ts.strftime("%Y-%m-%d %H:%M:%S")} ({tz})'
+            now_date_filename = now_date_readable.replace(" ", "").replace(":", "")
+            ts = int(ts.timestamp())
+            salt, quittance = create_salt_and_quittance(ts)
 
-        salt, quittance = create_salt_and_quittance(now_date_filename)
-
-        hash_signature = hash_sha256(
-            salt + now_date_filename + leaf_infos.md5_value + leaf_infos.sha256_value
-        )
-        file_data = (
-            salt,
-            now_date_filename,
-            leaf_infos.md5_value,
-            leaf_infos.sha256_value,
-            now_date_readable,
-        )
-        tree = TreeBuilder()
-        if (
-            tree_mutex.locked()
-        ):  # if the tree is finalizing we put the new leaf in the waiting list.
-            tree.add_waiting_elem(
-                hash_signature, leaf_infos.email_user, leaf_infos, quittance, file_data
+            hash_signature = hash_sha256(
+                [
+                    convert_hexstring_to_binary(salt),
+                    struct.pack(">d", ts),
+                    convert_hexstring_to_binary(leaf_infos.md5_value),
+                    convert_hexstring_to_binary(leaf_infos.sha256_value),
+                ]
             )
-        else:
-            tree_mutex.acquire()
-            try:
-                tree.add_elem(
+            file_data = (
+                salt,
+                now_date_filename,
+                leaf_infos.md5_value,
+                leaf_infos.sha256_value,
+                now_date_readable,
+            )
+            tree = TreeBuilder()
+            if (
+                tree_mutex.locked()
+            ):  # if the tree is finalizing we put the new leaf in the waiting list.
+                tree.add_waiting_elem(
                     hash_signature,
                     leaf_infos.email_user,
                     leaf_infos,
                     quittance,
                     file_data,
                 )
-                if leaf_infos.want_ancrage_informations:
-                    tree.add_mail_ancrage(
+            else:
+                tree_mutex.acquire()
+                try:
+                    tree.add_elem(
+                        hash_signature,
                         leaf_infos.email_user,
+                        leaf_infos,
                         quittance,
-                        leaf_infos.case_number,
-                        leaf_infos.file_id,
-                        leaf_infos.language,
+                        file_data,
                     )
-            finally:
-                tree_mutex.release()
-        return {"message": "Success"}
+                    if leaf_infos.want_ancrage_informations:
+                        tree.add_mail_ancrage(
+                            leaf_infos.email_user,
+                            quittance,
+                            leaf_infos.case_number,
+                            leaf_infos.file_id,
+                            leaf_infos.language,
+                        )
+                finally:
+                    tree_mutex.release()
+            return {"message": "Success"}
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="MD5 and/or SHA256 incorrect.",
+            )
     else:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -297,7 +314,22 @@ async def verify_receipt(
     if result is not None:
         # if yes we directly return it
         return result
-    file_value = hash_sha256(salt + date + md5 + sha256)
+
+    date = reformate_date(date)
+    dt = date.split(" (")
+    dtimezone = dt[1].split(" : ")[1][:-1]
+    timestamp = datetime.timestamp(
+        datetime.strptime(dt[0] + dtimezone, "%Y-%m-%d %H:%M:%S%Z%z")
+    )
+
+    file_value = hash_sha256(
+        [
+            convert_hexstring_to_binary(salt),
+            struct.pack(">d", int(timestamp)),
+            convert_hexstring_to_binary(md5),
+            convert_hexstring_to_binary(sha256),
+        ]
+    )
 
     # we tell FastAPI that the branches are str but they are formatted as a list so we can literal_eval them.
     anterior_branches = ast.literal_eval(anterior_branches)
@@ -324,20 +356,13 @@ async def verify_receipt(
     )
     hg, hd = get_hg_hd(tree_root)
 
-    date = reformate_date(date)
-
     found_tx = None
     date_transaction = None
 
-    # we check all the transactions in a 2 hour interval so we don't need to check all of them (it's faster).
-    dt = date.split(" (")
-    dtimezone = dt[1].split(" : ")[1][:-1]
-    timestamp = datetime.timestamp(
-        datetime.strptime(dt[0] + dtimezone, "%Y-%m-%d %H:%M:%S%Z%z")
-    )
+    # we check all the transactions in a 2 day interval so we don't need to check all of them (it's faster).
 
-    t1 = timestamp - 3600
-    t2 = timestamp + 3600
+    t1 = timestamp - 86400
+    t2 = timestamp + 86400
 
     with open("contract_transactions.json", "r") as openfile:
         txs = json.load(openfile)
@@ -356,7 +381,7 @@ async def verify_receipt(
             hd_blockchain = decoded_value[1]
             if hd == hd_blockchain:
                 date_validation_arbre = decoded_value[2]
-                lid_decrypted = "{:016x}".format(int(cipher, 16) ^ int(hg, 16))
+                lid_decrypted = hex(int(cipher, 16) ^ int(hg, 16))[2:]
                 lid_decrypted = "-".join(
                     lid_decrypted[i : i + 4] for i in range(0, len(lid_decrypted), 4)
                 )

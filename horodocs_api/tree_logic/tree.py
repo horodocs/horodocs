@@ -4,6 +4,7 @@ import os
 import queue
 from threading import Lock, Thread
 from time import sleep
+from typing import Optional
 
 from pydantic import BaseModel
 from requests.exceptions import ConnectionError, ConnectTimeout, ReadTimeout
@@ -35,7 +36,6 @@ from smart_contract.eth_interface import deactivate_horodating
 from gettext import gettext as _
 import gettext
 from pathlib import Path
-import logging
 
 #: Mutex used to remove concurrencies issues.
 tree_mutex = Lock()
@@ -52,6 +52,7 @@ class LeafInfos(BaseModel):
     comments: str
     want_ancrage_informations: bool
     language: str
+    password: Optional[str]
 
 
 class TreeBuilder(metaclass=Singleton):
@@ -295,7 +296,9 @@ class TreeBuilder(metaclass=Singleton):
                     posterior_branches,
                 )
                 pdf_builder = PdfCreator(
-                    file_name=quittance, language=leaf_infos.language
+                    file_name=quittance,
+                    language=leaf_infos.language,
+                    password=leaf_infos.password,
                 )
                 pdf_builder.add_title(_("QUITTANCE DE L'HORODATAGE AVEC CODE QR"))
                 pdf_builder.add_qr_code(qr_name, qr_code.data)
@@ -318,9 +321,7 @@ class TreeBuilder(metaclass=Singleton):
                     leaf_infos.comments,
                 )
 
-                pdf_builder.add_category(
-                    _("Valeur témoin enregistrée dans la blockchain :")
-                )
+                pdf_builder.add_category(_("Enregistrement dans la blockchain :"))
 
                 pdf_builder.add_blockchain_values(lid, time2, "Sepolia-Ethereum (Test)")
                 pdf_builder.add_information_rect(
@@ -341,7 +342,7 @@ class TreeBuilder(metaclass=Singleton):
                 )
                 pdf_builder.add_information_rect(
                     _(
-                        "Clause de non-responsabilité : <br/>Cette quittance a été générée par la version {} du prototype de système d’horodatage développé par l’ESC de l'Université de Lausanne.<br/>Ce prototype est mis à disposition gratuitement en l’état et n’engage la responsabilité ni de l’ESC, ni de l'UNIL, ni de l’équipe de développement. Ce prototype utilise une blockchain test gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
+                        "Clause de non-responsabilité : <br/>Cette quittance a été générée par la version {} du système d’horodatage développé par l’ESC de l'Université de Lausanne.<br/>Ce système est mis à disposition gratuitement en l’état et n’engage la responsabilité ni de l’ESC, ni de l'UNIL, ni de l’équipe de développement. La version actuelle du système utilise une blockchain test gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
                     ).format(ACTUAL_VERSION)
                 )
                 pdf = pdf_builder.build_pdf()
@@ -356,10 +357,7 @@ class TreeBuilder(metaclass=Singleton):
                 recipient = email
                 email_message = EmailMessage(subject, message, EMAIL_ADMIN, recipient)
                 email_message.attach(filename=pdf_filename, content=pdf.read())
-                try:
-                    email_message.send()
-                except Exception as e:
-                    logging.error(e)
+                email_message.send()
         else:
             raise ValueError(
                 "The tree has not 2^n number of elements, complete the tree before using this function."

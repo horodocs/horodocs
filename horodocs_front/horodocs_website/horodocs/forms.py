@@ -7,12 +7,16 @@ class HorodatageForm(forms.Form):
     # filename_value = forms.CharField(required=True, widget=forms.HiddenInput(attrs={'class' : 'form-control horoform',  'autocomplete':'off'}))
     md5_value = forms.CharField(
         required=True,
+        max_length=32,
+        min_length=32,
         widget=forms.HiddenInput(
             attrs={"class": "form-control horoform", "autocomplete": "off"}
         ),
     )
     sha256_value = forms.CharField(
         required=True,
+        max_length=64,
+        min_length=64,
         widget=forms.HiddenInput(
             attrs={"class": "form-control horoform", "autocomplete": "off"}
         ),
@@ -54,6 +58,14 @@ class HorodatageForm(forms.Form):
         max_length=500,
         required=False,
         widget=forms.Textarea(
+            attrs={"class": "form-control horoform", "autocomplete": "off"}
+        ),
+    )
+    password = forms.CharField(
+        label=_("Mot de passe du PDF (si vide, le PDF ne sera pas protégé)"),
+        max_length=128,
+        required=False,
+        widget=forms.PasswordInput(
             attrs={"class": "form-control horoform", "autocomplete": "off"}
         ),
     )

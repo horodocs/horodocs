@@ -14,7 +14,8 @@ from .IDQ_quantis import get_true_random
 from exceptions import warn_admin
 from gettext import gettext as _
 import gettext
-
+import re
+import struct
 from settings import (
     TMP_URL,
     WEB_URL,
@@ -23,6 +24,18 @@ from settings import (
     ACTUAL_VERSION,
     WARN_ADMIN,
 )
+
+
+def is_valid_md5(s):
+    if len(s) == 32 and re.fullmatch(r"[0-9a-fA-F]{32}", s):
+        return True
+    return False
+
+
+def is_valid_sha256(s):
+    if len(s) == 64 and re.fullmatch(r"[0-9a-fA-F]{64}", s):
+        return True
+    return False
 
 
 def create_salt_and_quittance(time):
@@ -41,7 +54,7 @@ def create_salt_and_quittance(time):
 
     """
     size = 16
-    hashed_quitt_id = hash_sha256(time)
+    hashed_quitt_id = hash_sha256([struct.pack(">d", time)])
     try:
         sel = get_true_random(size, "x", 3)
     except (ConnectTimeout, ConnectionError, ReadTimeout) as e:  # backup
@@ -83,17 +96,32 @@ def bytes_xor(a, b):
     return bytes(x ^ y for x, y in zip(a, b))
 
 
-def hash_sha256(val):
-    """
-    Return the SHA256 value of the val parameter
+def convert_hexstring_to_binary(hexstring):
+    """Convert a hexstring to its binary representation
 
-    :param val: Value to hash.
-    :type val: str
+    :param hexstring: Hexadecimal valu
+    :type hexstring: str
+    :return: binary representation
+    :rtype: bytes
+    """
+    return struct.pack(">d", int(hexstring, 16))
+    # return bin(int(hexstring, 16))
+
+
+def hash_sha256(values):
+    """
+    Return the SHA256 value of the binary values in parameters
+
+    :param values: Binary values to hash.
+    :type values: List
     :return: The SHA256 of val.
     :rtype: str
 
     """
-    return hashlib.sha256(val.encode()).hexdigest()
+    sha256_hash = hashlib.sha256()
+    for binary_data in values:
+        sha256_hash.update(binary_data)
+    return sha256_hash.hexdigest()
 
 
 def hash_file(file):

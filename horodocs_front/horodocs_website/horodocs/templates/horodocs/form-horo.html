@@ -44,13 +44,22 @@
     {% translate "Un problème est survenu lors de l'envoi du formulaire. Veuillez réessayer plus tard ou contacter l'administrateur du système si l'erreur persiste." %}
 </div>
 <script type="text/javascript">
+    function validate_md5(md5_value) {
+        const md5Pattern = /^[a-f0-9]{32}$/i;
+        return md5Pattern.test(md5_value);
+    }
+    function validate_sha256(sha256_value) {
+        const sha256Pattern = /^[a-f0-9]{64}$/i;
+        return sha256Pattern.test(sha256_value);
+    }
     $("#clear_inputs").click(function(){
         clear_form_horo();
     });
 
     $("#infos").submit(function(event) {
         event.preventDefault();
-        if((document.getElementById("fileInput").files.length == 0) && (document.getElementById("input_md5_value").value == '') && (document.getElementById("input_sha256_value").value == '')){
+        console.log(validate_sha256(document.getElementById("input_sha256_value").value));
+        if((document.getElementById("fileInput").files.length == 0) && ((!validate_md5(document.getElementById("input_md5_value").value)) || (!validate_sha256(document.getElementById("input_sha256_value").value)))){
             $("#alert_file_missing").show();
         } else {
             $("#alert_file_missing").hide();
@@ -70,7 +79,6 @@
             $("#id_md5_value").val($("#input_md5_value").val()); 
             $("#id_sha256_value").val($("#input_sha256_value").val()); 
         }
-        console.log($("#infos").serialize())
         $.ajax({
             url: "add",
             type: "POST",

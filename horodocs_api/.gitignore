@@ -1,10 +1,7 @@
 .venv
 .env
+.vscode
 contract_transactions.json
 __pycache__
 /static/tmp/*
 node_modules
-*.log
-config_sql.db
-virtual_env
-config/

@@ -15,6 +15,7 @@ from reportlab.platypus import (
     ListItem,
     ListFlowable,
 )
+from reportlab.lib.pdfencrypt import StandardEncryption
 from dotenv import load_dotenv
 from pathlib import Path
 import os
@@ -28,7 +29,7 @@ class PdfCreator:
     #: Size of the pdf
     width, height = A4
 
-    def __init__(self, file_name, language):
+    def __init__(self, file_name, language, password):
         """Create a new almost blank pdf.
 
         Uses :ref:`CONTACT_NOM <constants>`
@@ -42,6 +43,10 @@ class PdfCreator:
         self.lang.install()
         self.buffer = io.BytesIO()
         self.filename = file_name
+
+        encrypt = None
+        if password:
+            encrypt = StandardEncryption(password)
         self.document = SimpleDocTemplate(
             self.buffer,
             rightMargin=15 * mm,
@@ -52,6 +57,7 @@ class PdfCreator:
             author=CONTACT_NOM,
             creator="ESC - UNIL",
             subject="Quittance",
+            encrypt=encrypt,
         )
 
         self.styles = getSampleStyleSheet()
@@ -161,6 +167,7 @@ class PdfCreator:
         )
         load_dotenv(dotenv_path)
         documentation_address = os.environ.get("HORODOCS_URL_DOCS")
+        github_link = os.environ.get("HORODOCS_GIT_PUBLIC")
         self.elements.append(Paragraph(explain_text, self.styles["Normal"]))
         self.elements.append(
             ListFlowable(
@@ -168,8 +175,8 @@ class PdfCreator:
                     ListItem(
                         Paragraph(
                             _(
-                                '<b>Version : </b> {} - <a href="{}">Lien documentation</a>'
-                            ).format(version, documentation_address),
+                                '<b>Version : </b> {} - <a href="{}">Lien documentation</a> - <a href="{}">Lien Github</a>'
+                            ).format(version, documentation_address, github_link),
                             self.styles["Normal"],
                         ),
                         leftIndent=24,
@@ -205,9 +212,9 @@ class PdfCreator:
                 [
                     ListItem(
                         Paragraph(
-                            _('<font color="blue"><b>Date :</b> {}</font>').format(
-                                time
-                            ),
+                            _(
+                                '<font color="blue"><b>Date et heure de la requête d\'horodatage :</b> {}</font>'
+                            ).format(time),
                             self.styles["Normal"],
                         ),
                         bulletColor="blue",
@@ -246,7 +253,7 @@ class PdfCreator:
                     ListItem(
                         Paragraph(
                             _(
-                                '<font color="blue"><b>Valeur témoin :</b> {}</font>'
+                                '<font color="blue"><b>Valeur de contrôle :</b> {}</font>'
                             ).format(lid),
                             self.styles["Normal"],
                         ),
