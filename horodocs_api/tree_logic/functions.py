@@ -99,13 +99,12 @@ def bytes_xor(a, b):
 def convert_hexstring_to_binary(hexstring):
     """Convert a hexstring to its binary representation
 
-    :param hexstring: Hexadecimal valu
+    :param hexstring: Hexadecimal value
     :type hexstring: str
     :return: binary representation
     :rtype: bytes
     """
-    return struct.pack(">d", int(hexstring, 16))
-    # return bin(int(hexstring, 16))
+    return binascii.unhexlify(hexstring)
 
 
 def hash_sha256(values):

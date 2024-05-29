@@ -17,6 +17,7 @@ from sqlalchemy.orm import sessionmaker
 from sql_db.db_utils import get_config
 
 from .functions import (
+    bytes_xor,
     create_qr,
     delete_tmp_files,
     find_next_power_of_2,
@@ -25,6 +26,7 @@ from .functions import (
     hash_sha256,
     is_power_of_2,
     xor_string,
+    convert_hexstring_to_binary,
 )
 from .IDQ_quantis import get_true_random
 from .mail_sender import EmailMessage
@@ -432,7 +434,14 @@ class SendTree(Thread):
                     except (ConnectTimeout, ConnectionError, ReadTimeout) as e:
                         lid = binascii.b2a_hex(os.urandom(8)).decode("utf-8")
                     # cipher_text = xor_string(int(hg, 16), lid)
-                    cipher_text = hex(int(hg, 16) ^ int(lid, 16))[2:]
+                    hgg, hgd = get_hg_hd(hg)
+                    cipher_text = bytes_xor(
+                        convert_hexstring_to_binary(hgg),
+                        convert_hexstring_to_binary(hgd),
+                    )
+                    cipher_text = bytes_xor(
+                        cipher_text, convert_hexstring_to_binary(lid)
+                    ).hex()
                     lid = "-".join(lid[i : i + 4] for i in range(0, len(lid), 4))
                     try:
                         tree.send_root_to_chain(f"{cipher_text},{hd}, {t2}")

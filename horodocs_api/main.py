@@ -381,11 +381,16 @@ async def verify_receipt(
             hd_blockchain = decoded_value[1]
             if hd == hd_blockchain:
                 date_validation_arbre = decoded_value[2]
-                lid_decrypted = hex(int(cipher, 16) ^ int(hg, 16))[2:]
+                hgg, hgd = get_hg_hd(hg)
+                cipher_text = bytes_xor(
+                    convert_hexstring_to_binary(hgg), convert_hexstring_to_binary(hgd)
+                )
+                lid_decrypted = bytes_xor(
+                    cipher_text, convert_hexstring_to_binary(cipher)
+                ).hex()
                 lid_decrypted = "-".join(
                     lid_decrypted[i : i + 4] for i in range(0, len(lid_decrypted), 4)
                 )
-                # lid_decrypted = xor_string(cipher, hg)
                 found_tx = tx
                 validation = bc.check_transaction_validation(tx["hash"])
                 date_transaction = datetime.fromtimestamp(
