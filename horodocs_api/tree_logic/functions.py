@@ -271,13 +271,23 @@ def calc_tree_root(leaves, file_value, tree_position, language):
     if len(leaves) > 0:
         first_leaf = leaves[0]
         if first_leaf[1] < tree_position:
-            tree_root = hash_sha256(first_leaf[2] + file_value)
+            tree_root = hash_sha256(
+                [
+                    convert_hexstring_to_binary(first_leaf[2]),
+                    convert_hexstring_to_binary(file_value),
+                ]
+            )
             text_recap_calc_root += _("Racine de l'arbre = SHA256({} + {})").format(
                 first_leaf[2], str(file_value)
             )
             text_recap_calc_root += _("Résultat : {}\n").format(tree_root)
         elif first_leaf[1] > tree_position:
-            tree_root = hash_sha256(file_value + first_leaf[2])
+            tree_root = hash_sha256(
+                [
+                    convert_hexstring_to_binary(file_value),
+                    convert_hexstring_to_binary(first_leaf[2]),
+                ]
+            )
             text_recap_calc_root += _("Racine de l'arbre = SHA256({} + {})\n").format(
                 str(file_value), first_leaf[2]
             )
@@ -288,14 +298,24 @@ def calc_tree_root(leaves, file_value, tree_position, language):
                 continue
             if leaf[1] < tree_position:
                 old_tree_root = tree_root
-                tree_root = hash_sha256(leaf[2] + tree_root)
+                tree_root = hash_sha256(
+                    [
+                        convert_hexstring_to_binary(leaf[2]),
+                        convert_hexstring_to_binary(tree_root),
+                    ]
+                )
                 text_recap_calc_root += _(
                     "Racine de l'arbre = SHA256({} + {})\n"
                 ).format(leaf[2], str(old_tree_root))
                 text_recap_calc_root += _("Résultat : {}\n").format(tree_root)
             elif leaf[1] > tree_position:
                 old_tree_root = tree_root
-                tree_root = hash_sha256(tree_root + leaf[2])
+                tree_root = hash_sha256(
+                    [
+                        convert_hexstring_to_binary(tree_root),
+                        convert_hexstring_to_binary(leaf[2]),
+                    ]
+                )
                 text_recap_calc_root += _(
                     "Racine de l'arbre = SHA256({} + {})\n"
                 ).format(str(old_tree_root), leaf[2])

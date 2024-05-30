@@ -219,7 +219,10 @@ class TreeBuilder(metaclass=Singleton):
 
         while (j % 2) == 1:
             self.__parts[(i + 1, (j - 1) // 2)] = hash_sha256(
-                self.__parts[(i, j - 1)] + self.__parts[(i, j)]
+                [
+                    convert_hexstring_to_binary(self.__parts[(i, j - 1)]),
+                    convert_hexstring_to_binary(self.__parts[(i, j)]),
+                ]
             )
             j = (j - 1) // 2
             i = i + 1
