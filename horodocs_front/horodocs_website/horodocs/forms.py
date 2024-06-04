@@ -62,7 +62,9 @@ class HorodatageForm(forms.Form):
         ),
     )
     password = forms.CharField(
-        label=_("Mot de passe du PDF (si vide, le PDF ne sera pas protégé)"),
+        label=_(
+            "Mot de passe du reçu PDF (si vide, le reçu PDF sera envoyé non chiffré)"
+        ),
         max_length=128,
         required=False,
         widget=forms.PasswordInput(
