@@ -1,0 +1,27 @@
+{% block results_hash %}
+<div id="results" style="display:none;">
+    <div class="hashResult panel panel-default" style="word-break:break-all">
+        <div id="filenameResult" class="panel-heading">
+
+        </div>
+        <table class="table" style="text-align:left">
+            <tr>
+                <td width="80"><strong>MD5</strong></td> 
+                <td> 
+                    <div class="hash_value" id="md5_value" > 
+                        <div id="progress_md5_value"></div> 
+                    </div> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td width="80"><strong>SHA256</strong></td> 
+                <td> 
+                    <div class="hash_value" id="sha256_value"> 
+                        <div id="progress_sha256_value"></div> 
+                    </div> 
+                </td> 
+            </tr> 
+        </table> 
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'horodocs/base.html' %}
+{% load i18n %}
+{% block main %}
+  <div class="container">
+    {% translate "Vous vous êtes déconnecté avec succès ! A bientôt." %}
+    {% translate "Vous allez être redirigé sur la page d'accueil dans 5 secondes, ou vous pouvez cliquer" %} <a id="link" href="/">{% translate "ici" %}</a>
+  </div>
+
+  <script>
+    /* Redirection automatique après 5 secondes */
+    setTimeout(function() { 
+      window.location.href = $("#link")[0].href; 
+    }, 5000);
+  </script>
+{% endblock %}

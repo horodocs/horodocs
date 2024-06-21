@@ -1,0 +1,22 @@
+{% extends 'horodocs/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% translate "Horodatage d'empreintes" %}{% endblock %}
+{% block main %}
+<!-- Fichier qui s'occupe de l'interface pour horodater les empreintes d'une trace -->
+
+    <div class="container-fluid">
+        <h4 class="page-header"><i class="fa fa-file-archive-o fa-fw"></i>
+            {% translate "Calcul d'empreintes d'un fichier et/ou horodatage de ces empreintes, ancré dans une blockchain" %}
+        </h4>
+        <div id="horloge"></div>
+        <div class="">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            <strong>{% translate "Le calcul des empreintes se fait exclusivement sur votre machine locale et aucun fichier n'est transféré. Si vous préférez, vous pouvez aussi directement fournir les empreintes et les horodater via l'onglet MD5 et SHA256" %}</strong>
+        </div>
+              
+        {% include 'horodocs/form-horo.html' %}
+    </div>
+
+    <div id="container" class="container-fluid"></div>
+{% endblock %}
