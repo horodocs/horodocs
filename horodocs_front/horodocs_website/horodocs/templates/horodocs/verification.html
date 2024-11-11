@@ -43,8 +43,8 @@
                 <p><b><i class="fa fa-check fa-2x" aria-hidden="true" style="color:green"></i>{% translate "L'ancrage dans la blockchain est " %}<span class="text-success">{% translate "valide" %}<i class="fa fa-check fa-2x" aria-hidden="true" style="color:green"></i></span> {% translate "mais" %} <span class="text-warning">{% translate "pas encore pérenne" %}<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true" style="color:orange"></i></span>.</b></p>
             {% endif %}
         {% elif validation == 0 or validation == 5 %}
-            <p class="text-danger"><b>{% translate "L'horodatage du fichier n'a pas été retrouvé." %}</b></p>
-            <p><b><i class="fa fa-times fa-2x" aria-hidden="true" style="color:red"></i>{% translate "L'ancrage dans la blockchain est " %}<span class="text-danger">{% translate "invalide" %} <i class="fa fa-times fa-2x" aria-hidden="true" style="color:red"></i></span>.</b></p>
+            <p class="text-warning"><b>{% translate "L'horodatage du fichier n'a pas été retrouvé. Il faut attendre au minimum 5 minutes pour laisser le temps au processus d'ancrage de se finaliser." %}</b></p>
+            <p><b><i class="fa fa-times fa-2x" aria-hidden="true" style="color:red"></i>{% translate "L'ancrage dans la blockchain " %}<span class="text-danger">{% translate "n'a pas pu être validé" %} <i class="fa fa-times fa-2x" aria-hidden="true" style="color:red"></i></span>.</b></p>
         {% else %}
             <p class="test-warning"><b>{% translate "L'horodatage du fichier a été retrouvé mais la transaction est en cours d'ajout dans un bloc. Elle n'est donc pas encore ancrée dans la blockchain." %}</b></p>
             <b>{% translate "Date et heure de la soumission dans la blockchain :" %}</b>

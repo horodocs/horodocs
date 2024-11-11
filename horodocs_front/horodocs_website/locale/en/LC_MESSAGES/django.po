@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-04 10:27+0200\n"
+"POT-Creation-Date: 2024-11-11 09:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,9 @@ msgstr "Free-form text"
 
 #: .\horodocs\forms.py:66
 msgid "Mot de passe du reçu PDF (si vide, le reçu PDF sera envoyé non chiffré)"
-msgstr "Password for the PDF receipt (if empty, the PDF receipt will be sent unencrypted)"
+msgstr ""
+"Password for the PDF receipt (if empty, the PDF receipt will be sent "
+"unencrypted)"
 
 #: .\horodocs\forms.py:75
 msgid "Recevoir la confirmation de l'ancrage dans la blockchain par mail"
@@ -269,7 +271,7 @@ msgid "Déconnexion"
 msgstr "Logout"
 
 #: .\horodocs\templates\horodocs\navbar-top.html:40
-#: .\horodocs\templates\registration\login.html:25
+#: .\horodocs\templates\registration\login.html:26
 msgid "Connexion"
 msgstr "Login"
 
@@ -323,7 +325,6 @@ msgstr ""
 
 #: .\horodocs\templates\horodocs\verification.html:41
 #: .\horodocs\templates\horodocs\verification.html:43
-#: .\horodocs\templates\horodocs\verification.html:47
 msgid "L'ancrage dans la blockchain est "
 msgstr "The anchoring in the blockchain is "
 
@@ -344,14 +345,19 @@ msgid "pas encore pérenne"
 msgstr "not yet perennial"
 
 #: .\horodocs\templates\horodocs\verification.html:46
-msgid "L'horodatage du fichier n'a pas été retrouvé."
-msgstr ""
-"No trace of the file's time-stamping was found in the Ethereum-test "
-"blockchain."
+msgid ""
+"L'horodatage du fichier n'a pas été retrouvé. Il faut attendre au minimum 5 "
+"minutes pour laisser le temps au processus d'ancrage de se finaliser."
+msgstr "The file's timestamp has not been found. You need to wait at least 5 minutes to allow the process to complete."
 
 #: .\horodocs\templates\horodocs\verification.html:47
-msgid "invalide"
-msgstr "invalid"
+#: .\horodocs\templates\horodocs\verification.html:55
+msgid "L'ancrage dans la blockchain "
+msgstr "The anchoring in the blockchain "
+
+#: .\horodocs\templates\horodocs\verification.html:47
+msgid "n'a pas pu être validé"
+msgstr "could not be validated"
 
 #: .\horodocs\templates\horodocs\verification.html:49
 msgid ""
@@ -361,10 +367,6 @@ msgstr ""
 "The timestamp of the file has been found, but the transaction is in the "
 "process of being added to a block. It is therefore not yet anchored in the "
 "blockchain."
-
-#: .\horodocs\templates\horodocs\verification.html:55
-msgid "L'ancrage dans la blockchain "
-msgstr "The anchoring in the blockchain "
 
 #: .\horodocs\templates\horodocs\verification.html:55
 msgid "n'a pas encore été effectué "
@@ -432,33 +434,50 @@ msgid "Vous vous êtes déconnecté avec succès ! A bientôt."
 msgstr "You've successfully logged off! See you soon."
 
 #: .\horodocs\templates\registration\logged_out.html:6
+#, fuzzy
+#| msgid ""
+#| "Vous allez être redirigé sur la page d'accueil dans 5 secondes, ou vous "
+#| "pouvez cliquer <a id="
 msgid ""
 "Vous allez être redirigé sur la page d'accueil dans 5 secondes, ou vous "
-"pouvez cliquer <a id="
+"pouvez cliquer"
 msgstr ""
 "You will be redirected to the home page in 5 seconds, or you can click <a id="
 
-#: .\horodocs\templates\registration\login.html:7
+#: .\horodocs\templates\registration\logged_out.html:6
+#, fuzzy
+#| msgid "Fichier"
+msgid "ici"
+msgstr "File"
+
+#: .\horodocs\templates\registration\login.html:4
+msgid ""
+"A test user is available, the username is test and the password is test2024"
+msgstr ""
+
+#: .\horodocs\templates\registration\login.html:8
+#: .\horodocs\templates\registration\login.html:12
 msgid "Username"
 msgstr "Username"
 
-#: .\horodocs\templates\registration\login.html:16
+#: .\horodocs\templates\registration\login.html:17
+#: .\horodocs\templates\registration\login.html:21
 msgid "Password"
 msgstr "Password"
 
-#: .\horodocs_website\settings.py:125
+#: .\horodocs_website\settings.py:154
 msgid "English"
 msgstr "English"
 
-#: .\horodocs_website\settings.py:126
+#: .\horodocs_website\settings.py:155
 msgid "Français"
 msgstr "French"
 
-#: .\horodocs_website\settings.py:211
+#: .\horodocs_website\settings.py:238
 msgid "Cookie settings"
 msgstr "Cookie settings"
 
-#: .\horodocs_website\settings.py:213
+#: .\horodocs_website\settings.py:240
 msgid ""
 "We are using cookies on this website. Only essentials one, there is no "
 "analytics here."
@@ -466,29 +485,37 @@ msgstr ""
 "We are using cookies on this website. Only essentials one, there is no "
 "analytics here."
 
-#: .\horodocs_website\settings.py:215
+#: .\horodocs_website\settings.py:242
 msgid "Please accept our cookies"
 msgstr "Please accept our cookies"
 
-#: .\horodocs_website\settings.py:219
+#: .\horodocs_website\settings.py:247
 msgid "Essential"
 msgstr "Essential"
 
-#: .\horodocs_website\settings.py:220
+#: .\horodocs_website\settings.py:248
 msgid "Essential cookies allow this page to work."
 msgstr "Essential cookies allow this page to work."
 
-#: .\horodocs_website\settings.py:224
+#: .\horodocs_website\settings.py:253
 msgid "Meta cookie for the cookies that are set."
 msgstr "Meta cookie for the cookies that are set."
 
-#: .\horodocs_website\settings.py:229
+#: .\horodocs_website\settings.py:258
 msgid "This cookie prevents Cross-Site-Request-Forgery attacks."
 msgstr "This cookie prevents Cross-Site-Request-Forgery attacks."
 
-#: .\horodocs_website\settings.py:235
+#: .\horodocs_website\settings.py:264
 msgid "This cookie is necessary to allow logging in, for example."
 msgstr "This cookie is necessary to allow logging in, for example."
+
+#~ msgid "L'horodatage du fichier n'a pas été retrouvé."
+#~ msgstr ""
+#~ "No trace of the file's time-stamping was found in the Ethereum-test "
+#~ "blockchain."
+
+#~ msgid "invalide"
+#~ msgstr "invalid"
 
 #~ msgid "Horodatage d'informations"
 #~ msgstr "Information time-stamping"
