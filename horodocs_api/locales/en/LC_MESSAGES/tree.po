@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 10:04+0200\n"
+"POT-Creation-Date: 2024-11-12 09:14+0100\n"
 "PO-Revision-Date: 2024-05-24 09:04+0200\n"
 "Last-Translator: <EMAIL@ADDRESS>\n"
 "Language-Team: English\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\tree_logic\functions.py:276
+#: .\tree_logic\functions.py:280
 msgid "Racine de l'arbre = SHA256({} + {})"
 msgstr "Tree root = SHA256({} + {})"
 
-#: .\tree_logic\functions.py:279 .\tree_logic\functions.py:285
-#: .\tree_logic\functions.py:296 .\tree_logic\functions.py:303
+#: .\tree_logic\functions.py:283 .\tree_logic\functions.py:294
+#: .\tree_logic\functions.py:310 .\tree_logic\functions.py:322
 msgid "Résultat : {}\n"
 msgstr "Result: {}\n"
 
-#: .\tree_logic\functions.py:282 .\tree_logic\functions.py:294
-#: .\tree_logic\functions.py:301
+#: .\tree_logic\functions.py:291 .\tree_logic\functions.py:308
+#: .\tree_logic\functions.py:320
 msgid "Racine de l'arbre = SHA256({} + {})\n"
 msgstr "Tree root = SHA256({} + {})\n"
 
-#: .\tree_logic\functions.py:307
+#: .\tree_logic\functions.py:326
 msgid "Une seule valeur dans l'arbre.\n"
 msgstr "A single value in the tree.\n"
 
-#: .\tree_logic\functions.py:308
+#: .\tree_logic\functions.py:327
 msgid "Racine de l'arbre = {}\n"
 msgstr "Tree root = {}\n"
 
@@ -130,11 +130,11 @@ msgstr "SCJ - University of Lausanne"
 msgid "Créé le {}"
 msgstr "Created the {}"
 
-#: .\tree_logic\TransactionVerifier.py:84
+#: .\tree_logic\TransactionVerifier.py:83
 msgid "Informations sur l'ancrage de l'arbre dans la blockchain"
 msgstr "Information about anchoring the tree in the blockchain"
 
-#: .\tree_logic\TransactionVerifier.py:87
+#: .\tree_logic\TransactionVerifier.py:86
 msgid ""
 "Bonjour,\n"
 "\n"
@@ -146,7 +146,7 @@ msgstr ""
 "The transaction linked to the following receipt numbers has been "
 "successfully anchored in the blockchain:\n"
 
-#: .\tree_logic\TransactionVerifier.py:91
+#: .\tree_logic\TransactionVerifier.py:90
 msgid ""
 "Bonjour,\n"
 "\n"
@@ -158,15 +158,15 @@ msgstr ""
 "The transaction linked to the receipt numbers below failed to be anchored in "
 "the blockchain:\n"
 
-#: .\tree_logic\TransactionVerifier.py:97
+#: .\tree_logic\TransactionVerifier.py:96
 msgid "- Numéro de cas : {}, Identifiant du fichier : {} ({})\n"
 msgstr "- Case identifier: {}, File identifier : {} ({})\n"
 
-#: .\tree_logic\TransactionVerifier.py:101
+#: .\tree_logic\TransactionVerifier.py:100
 msgid "Merci de bien vouloir recommencer le processus.\n"
 msgstr "Please repeat the process.\n"
 
-#: .\tree_logic\TransactionVerifier.py:103
+#: .\tree_logic\TransactionVerifier.py:102
 msgid ""
 "\n"
 "Nous vous remercions de votre confiance.\n"
@@ -180,19 +180,19 @@ msgstr ""
 "The SCJ Time-Stamping team.\n"
 "This email is sent automatically, please do not reply."
 
-#: .\tree_logic\tree.py:287
+#: .\tree_logic\tree.py:292
 msgid "Registre_Quittance_{}_{}.pdf"
 msgstr "Receipt_Register_{}_{}.pdf"
 
-#: .\tree_logic\tree.py:303
+#: .\tree_logic\tree.py:308
 msgid "QUITTANCE DE L'HORODATAGE AVEC CODE QR"
 msgstr "TIMESTAMP RECEIPT WITH QR CODE"
 
-#: .\tree_logic\tree.py:305
+#: .\tree_logic\tree.py:310
 msgid "Informations sur le fichier horodaté :"
 msgstr "Time-stamped file information:"
 
-#: .\tree_logic\tree.py:312
+#: .\tree_logic\tree.py:317
 msgid ""
 "Lors d’une vérification, assurez-vous que la date et les empreintes "
 "numériques du fichier correspondent à celles qui sont imprimées ci-dessus."
@@ -200,15 +200,15 @@ msgstr ""
 "When checking a timestamp, make sure that the file's date and hash values "
 "match those printed above."
 
-#: .\tree_logic\tree.py:316
+#: .\tree_logic\tree.py:321
 msgid "Informations générales :"
 msgstr "General information:"
 
-#: .\tree_logic\tree.py:324
+#: .\tree_logic\tree.py:329
 msgid "Enregistrement dans la blockchain :"
 msgstr "Record in the blockchain:"
 
-#: .\tree_logic\tree.py:329
+#: .\tree_logic\tree.py:334
 msgid ""
 "Lors de la vérification, afin de corroborer que l’horodatage a été retrouvé "
 "dans la blockchain, une valeur témoin est retournée. Elle doit correspondre "
@@ -217,11 +217,11 @@ msgstr ""
 "When checking a timestamp, make sure that the file's date and hash values "
 "match those printed above."
 
-#: .\tree_logic\tree.py:333
+#: .\tree_logic\tree.py:338
 msgid "Informations techniques :"
 msgstr "Technical information:"
 
-#: .\tree_logic\tree.py:336
+#: .\tree_logic\tree.py:341
 msgid ""
 "Les informations techniques suivantes permettent de retrouver cet horodatage "
 "dans la blockchain soit manuellement, soit via la programmation d’un autre "
@@ -231,7 +231,7 @@ msgstr ""
 "timestamp in the blockchain, either manually or by programming another "
 "independent verification system."
 
-#: .\tree_logic\tree.py:345
+#: .\tree_logic\tree.py:350
 msgid ""
 "Clause de non-responsabilité : <br/>Cette quittance a été générée par la "
 "version {} du système d’horodatage développé par l’ESC de l'Université de "
@@ -240,23 +240,24 @@ msgid ""
 "développement. La version actuelle du système utilise une blockchain test "
 "gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
 msgstr ""
-"Disclaimer: <br/>This receipt has been generated by version {} of the "
-"time-stamping system developed by the SCJ of the University of "
-"Lausanne.<br/>This tool is made available free of charge as is, and does not "
-"engage the responsibility of the SCJ, the UNIL or the development team. The actual "
+"Disclaimer: <br/>This receipt has been generated by version {} of the time-"
+"stamping system developed by the SCJ of the University of Lausanne.<br/>This "
+"tool is made available free of charge as is, and does not engage the "
+"responsibility of the SCJ, the UNIL or the development team. The actual "
 "system uses a free test blockchain, similar to Ethereum; the integrity of "
 "this test blockchain cannot be guaranteed."
 
-#: .\tree_logic\tree.py:350
+#: .\tree_logic\tree.py:355
 msgid "Votre quittance pour le fichier {}"
 msgstr "Your receipt for the {} file"
 
-#: .\tree_logic\tree.py:354
+#: .\tree_logic\tree.py:359
 msgid ""
 "Bonjour, vous trouverez en pièce-jointe le pdf correspondant à l'horodatage "
 "de votre fichier ayant pour identifiant {}, appartenant au cas {} et fait le "
 "{}.\n"
-"\n"
+"Le système de vérification peut mettre jusqu'à 5 min pour retrouver votre "
+"quittance.\n"
 " Nous vous remercions de votre confiance.\n"
 "\n"
 " L'équipe Horodatage ESC.\n"
@@ -264,7 +265,7 @@ msgid ""
 msgstr ""
 "Hello, Please find attached the PDF receipt corresponding to the timestamp  "
 "of your file with identifier {}, belonging to case {}. Created on {}.\n"
-"\n"
+"The verification system can take up to 5 minutes to find your receipt\n"
 " Thank you for your trust and confidence.\n"
 "\n"
 " The SCJ time-stamping team.\n"

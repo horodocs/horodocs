@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 10:04+0200\n"
+"POT-Creation-Date: 2024-11-12 09:14+0100\n"
 "PO-Revision-Date: 2024-01-17 14:51+0100\n"
 "Last-Translator: <EMAIL@ADDRESS>\n"
 "Language-Team: English\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\tree_logic\functions.py:276
+#: .\tree_logic\functions.py:280
 msgid "Racine de l'arbre = SHA256({} + {})"
 msgstr "Racine de l'arbre = SHA256({} + {})"
 
-#: .\tree_logic\functions.py:279 .\tree_logic\functions.py:285
-#: .\tree_logic\functions.py:296 .\tree_logic\functions.py:303
+#: .\tree_logic\functions.py:283 .\tree_logic\functions.py:294
+#: .\tree_logic\functions.py:310 .\tree_logic\functions.py:322
 msgid "Résultat : {}\n"
 msgstr "Résultat : {}\n"
 
-#: .\tree_logic\functions.py:282 .\tree_logic\functions.py:294
-#: .\tree_logic\functions.py:301
+#: .\tree_logic\functions.py:291 .\tree_logic\functions.py:308
+#: .\tree_logic\functions.py:320
 msgid "Racine de l'arbre = SHA256({} + {})\n"
 msgstr "Racine de l'arbre = SHA256({} + {})\n"
 
-#: .\tree_logic\functions.py:307
+#: .\tree_logic\functions.py:326
 msgid "Une seule valeur dans l'arbre.\n"
 msgstr "Une seule valeur dans l'arbre.\n"
 
-#: .\tree_logic\functions.py:308
+#: .\tree_logic\functions.py:327
 msgid "Racine de l'arbre = {}\n"
 msgstr "Racine de l'arbre = {}\n"
 
@@ -131,11 +131,11 @@ msgstr "ESC - Université de Lausanne"
 msgid "Créé le {}"
 msgstr "Créé le {}"
 
-#: .\tree_logic\TransactionVerifier.py:84
+#: .\tree_logic\TransactionVerifier.py:83
 msgid "Informations sur l'ancrage de l'arbre dans la blockchain"
 msgstr "Informations sur l'ancrage de l'arbre dans la blockchain"
 
-#: .\tree_logic\TransactionVerifier.py:87
+#: .\tree_logic\TransactionVerifier.py:86
 msgid ""
 "Bonjour,\n"
 "\n"
@@ -147,7 +147,7 @@ msgstr ""
 "La transaction liée aux numéros de quittance ci-dessous a été ancrée avec "
 "succès dans la blockchain :\n"
 
-#: .\tree_logic\TransactionVerifier.py:91
+#: .\tree_logic\TransactionVerifier.py:90
 msgid ""
 "Bonjour,\n"
 "\n"
@@ -159,15 +159,15 @@ msgstr ""
 "La transaction liée aux numéros de quittance ci-dessous a eu un problème "
 "lors de l'ancrage dans la blockchain :\n"
 
-#: .\tree_logic\TransactionVerifier.py:97
+#: .\tree_logic\TransactionVerifier.py:96
 msgid "- Numéro de cas : {}, Identifiant du fichier : {} ({})\n"
 msgstr "- Numéro de cas : {}, Identifiant du fichier : {} ({})\n"
 
-#: .\tree_logic\TransactionVerifier.py:101
+#: .\tree_logic\TransactionVerifier.py:100
 msgid "Merci de bien vouloir recommencer le processus.\n"
 msgstr "Merci de bien vouloir recommencer le processus.\n"
 
-#: .\tree_logic\TransactionVerifier.py:103
+#: .\tree_logic\TransactionVerifier.py:102
 msgid ""
 "\n"
 "Nous vous remercions de votre confiance.\n"
@@ -181,19 +181,19 @@ msgstr ""
 "L'équipe Horodatage ESC.\n"
 "Cet email est envoyé automatiquement, merci de ne pas y répondre."
 
-#: .\tree_logic\tree.py:287
+#: .\tree_logic\tree.py:292
 msgid "Registre_Quittance_{}_{}.pdf"
 msgstr "Registre_Quittance_{}_{}.pdf"
 
-#: .\tree_logic\tree.py:303
+#: .\tree_logic\tree.py:308
 msgid "QUITTANCE DE L'HORODATAGE AVEC CODE QR"
 msgstr "QUITTANCE DE L'HORODATAGE AVEC CODE QR"
 
-#: .\tree_logic\tree.py:305
+#: .\tree_logic\tree.py:310
 msgid "Informations sur le fichier horodaté :"
 msgstr "Informations sur le fichier horodaté :"
 
-#: .\tree_logic\tree.py:312
+#: .\tree_logic\tree.py:317
 msgid ""
 "Lors d’une vérification, assurez-vous que la date et les empreintes "
 "numériques du fichier correspondent à celles qui sont imprimées ci-dessus."
@@ -201,15 +201,15 @@ msgstr ""
 "Lors d’une vérification, assurez-vous que la date et les empreintes "
 "numériques du fichier correspondent à celles qui sont imprimées ci-dessus."
 
-#: .\tree_logic\tree.py:316
+#: .\tree_logic\tree.py:321
 msgid "Informations générales :"
 msgstr "Informations générales :"
 
-#: .\tree_logic\tree.py:324
+#: .\tree_logic\tree.py:329
 msgid "Enregistrement dans la blockchain :"
 msgstr "Enregistrement dans la blockchain :"
 
-#: .\tree_logic\tree.py:329
+#: .\tree_logic\tree.py:334
 msgid ""
 "Lors de la vérification, afin de corroborer que l’horodatage a été retrouvé "
 "dans la blockchain, une valeur témoin est retournée. Elle doit correspondre "
@@ -219,11 +219,11 @@ msgstr ""
 "dans la blockchain, une valeur témoin est retournée. Elle doit correspondre "
 "à celle imprimée sur la quittance."
 
-#: .\tree_logic\tree.py:333
+#: .\tree_logic\tree.py:338
 msgid "Informations techniques :"
 msgstr "Informations techniques :"
 
-#: .\tree_logic\tree.py:336
+#: .\tree_logic\tree.py:341
 msgid ""
 "Les informations techniques suivantes permettent de retrouver cet horodatage "
 "dans la blockchain soit manuellement, soit via la programmation d’un autre "
@@ -232,33 +232,35 @@ msgstr ""
 "Les informations techniques suivantes permettent de retrouver cet horodatage "
 "dans la blockchain soit manuellement, soit via la programmation d’un autre "
 "système de vérification indépendant."
-
-#: .\tree_logic\tree.py:345
-msgid ""
-"Clause de non-responsabilité : <br/>Cette quittance a été générée par la "
-"version {} du système d’horodatage développé par l’ESC de l'Université de "
-"Lausanne.<br/>Ce système est mis à disposition gratuitement en l’état et "
-"n’engage la responsabilité ni de l’ESC, ni de l'UNIL, ni de l’équipe de "
-"développement. La version actuelle du système utilise une blockchain test "
-"gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
-msgstr ""
-"Clause de non-responsabilité : <br/>Cette quittance a été générée par la "
-"version {} du système d’horodatage développé par l’ESC de l'Université de "
-"Lausanne.<br/>Ce système est mis à disposition gratuitement en l’état et "
-"n’engage la responsabilité ni de l’ESC, ni de l'UNIL, ni de l’équipe de "
-"développement. La version actuelle du système utilise une blockchain test "
-"gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
 
 #: .\tree_logic\tree.py:350
+msgid ""
+"Clause de non-responsabilité : <br/>Cette quittance a été générée par la "
+"version {} du système d’horodatage développé par l’ESC de l'Université de "
+"Lausanne.<br/>Ce système est mis à disposition gratuitement en l’état et "
+"n’engage la responsabilité ni de l’ESC, ni de l'UNIL, ni de l’équipe de "
+"développement. La version actuelle du système utilise une blockchain test "
+"gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
+msgstr ""
+"Clause de non-responsabilité : <br/>Cette quittance a été générée par la "
+"version {} du système d’horodatage développé par l’ESC de l'Université de "
+"Lausanne.<br/>Ce système est mis à disposition gratuitement en l’état et "
+"n’engage la responsabilité ni de l’ESC, ni de l'UNIL, ni de l’équipe de "
+"développement. La version actuelle du système utilise une blockchain test "
+"gratuite, similaire à Ethereum, mais dont l’intégrité ne peut être garantie."
+
+#: .\tree_logic\tree.py:355
 msgid "Votre quittance pour le fichier {}"
 msgstr "Votre quittance pour le fichier {}"
 
-#: .\tree_logic\tree.py:354
+#: .\tree_logic\tree.py:359
+#, fuzzy
 msgid ""
 "Bonjour, vous trouverez en pièce-jointe le pdf correspondant à l'horodatage "
 "de votre fichier ayant pour identifiant {}, appartenant au cas {} et fait le "
 "{}.\n"
-"\n"
+"Le système de vérification peut mettre jusqu'à 5 min pour retrouver votre "
+"quittance.\n"
 " Nous vous remercions de votre confiance.\n"
 "\n"
 " L'équipe Horodatage ESC.\n"
@@ -267,7 +269,8 @@ msgstr ""
 "Bonjour, vous trouverez en pièce-jointe le pdf correspondant à l'horodatage "
 "de votre fichier ayant pour identifiant {}, appartenant au cas {} et fait le "
 "{}.\n"
-"\n"
+"Le système de vérification peut mettre jusqu'à 5 min pour retrouver votre "
+"quittance.\n"
 " Nous vous remercions de votre confiance.\n"
 "\n"
 " L'équipe Horodatage ESC.\n"

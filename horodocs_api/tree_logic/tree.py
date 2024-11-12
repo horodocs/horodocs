@@ -356,7 +356,7 @@ class TreeBuilder(metaclass=Singleton):
                     leaf_infos.file_id
                 )
                 message = _(
-                    "Bonjour, vous trouverez en pièce-jointe le pdf correspondant à l'horodatage de votre fichier ayant pour identifiant {}, appartenant au cas {} et fait le {}.\n\n Nous vous remercions de votre confiance.\n\n L'équipe Horodatage ESC.\n Cet email est envoyé automatiquement, merci de ne pas y répondre."
+                    "Bonjour, vous trouverez en pièce-jointe le pdf correspondant à l'horodatage de votre fichier ayant pour identifiant {}, appartenant au cas {} et fait le {}.\nLe système de vérification peut mettre jusqu'à 5 min pour retrouver votre quittance.\n Nous vous remercions de votre confiance.\n\n L'équipe Horodatage ESC.\n Cet email est envoyé automatiquement, merci de ne pas y répondre."
                 ).format(leaf_infos.file_id, leaf_infos.case_number, file_data[4])
 
                 recipient = email
